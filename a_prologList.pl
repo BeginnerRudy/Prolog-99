@@ -25,9 +25,22 @@ my_len(0, []).
 my_len(X, [_|Tail]) :- my_len(X1, Tail), X is X1 + 1.
 
 % % 1.05 (*) Reverse a list.
+% ** 
+%  my_reverse(Input, Output)
+
+% Attempt 1
+% my_reverse([X], [X]).
+% my_reverse([X|Tail], [Reversed|X]) :- my_reverse(Tail, Reversed). 
+
+% Attempt 2
+my_reverse([], []).
+my_reverse([X|Tail], [Reversed|X]) :- my_reverse(Tail, Reversed). 
+
 
 % % 1.06 (*) Find out whether a list is a palindrome. % A palindrome can be
 % read forward or backward; e.g. [x,a,m,a,x].
+is_palindrome([], true).
+is_palindrome(List, true) :- reverse(List, ListReverse), append(List, [], ListReverse).
 
 % % 1.07 (**) Flatten a nested list structure. % Transform a list, possibly
 % holding lists as elements into a 'flat' list by replacing each list with its
